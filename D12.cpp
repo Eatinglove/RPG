@@ -10,7 +10,7 @@ int num=0;
 int flag=0;
 int orb=0;
 int current[9]={a1,a2,a3,a4,a5,a6,a7,a8,a9};
-string path[100];
+string path[1000];
 void Delay(int time){
     clock_t now = clock();
     while (clock() - now < time);
@@ -30,7 +30,7 @@ void orbset(int want);
 void orbfinish();
 void A1(){
     orbset(orbnum);
-    cout<<"a1\n"<<health<<"\n";
+    //cout<<"a1\n"<<health<<"\n";
     num++;
     int dir1;
     dir1=rand()%2;
@@ -51,7 +51,7 @@ void A1(){
 }
 void A2(){
     orbset(orbnum);
-    cout<<"a2\n"<<health<<"\n";
+    //cout<<"a2\n"<<health<<"\n";
     num++;
     int dir2;
     dir2=rand()%3;
@@ -77,7 +77,7 @@ void A2(){
 }
 void A3(){
     orbset(orbnum);
-    cout<<"a3\n"<<health<<"\n";
+    //cout<<"a3\n"<<health<<"\n";
     num++;
     int dir3;
     dir3=rand()%2;
@@ -98,7 +98,7 @@ void A3(){
 }
 void A4(){
     orbset(orbnum);
-    cout<<"a4\n"<<health<<"\n";
+    //cout<<"a4\n"<<health<<"\n";
     num++;
     int dir4;
     dir4=rand()%3;
@@ -124,7 +124,7 @@ void A4(){
 }
 void A5(){
     orbset(orbnum);
-    cout<<"a5\n"<<health<<"\n";
+    //cout<<"a5\n"<<health<<"\n";
     num++;
     int dir5;
     dir5=rand()%4;
@@ -155,7 +155,7 @@ void A5(){
 }
 void A6(){
     orbset(orbnum);
-    cout<<"a6\n"<<health<<"\n";
+    //cout<<"a6\n"<<health<<"\n";
     num++;
     int dir6;
     dir6=rand()%3;
@@ -181,7 +181,7 @@ void A6(){
 }
 void A7(){
     orbset(orbnum);
-    cout<<"a7\n"<<health<<"\n";
+    //cout<<"a7\n"<<health<<"\n";
     num++;
     int dir7;
     dir7=rand()%2;
@@ -202,7 +202,7 @@ void A7(){
 }
 void A8(){
     orbset(orbnum);
-    cout<<"a8\n"<<health<<"\n";
+    //cout<<"a8\n"<<health<<"\n";
     num++;
     int dir8;
     dir8=rand()%3;
@@ -228,7 +228,7 @@ void A8(){
 }
 void A9(){
     orbset(orbnum);
-    cout<<"a9\n"<<health<<"\n";
+    //cout<<"a9\n"<<health<<"\n";
     num++;
     int dir9;
     dir9=rand()%2;
@@ -249,7 +249,7 @@ void A9(){
 }
 void A10(){
     failcount++;
-    cout<<"\ndied\n";
+    //cout<<"\ndied\n";
     //cout<<"orb:"<<orb;
     //main gogo
 }
@@ -266,7 +266,7 @@ void counting(int area){
     }
     else if(area==3){
         //cout<<" nothing ";
-        health=health-5;
+        health=health-25;
         orb=orb-5;
         if(orb<=0){
             orb=0;
@@ -281,8 +281,8 @@ void gogo(){
     for(int i=0;i<=8;i++){
         place[i]=current[i];
     }
-    for(int i=0;i<=99;i++){
-        path[i]="hi";
+    for(int i=0;i<=999;i++){
+        path[i]=" ";
     }
     orb=0;
     num=0;
@@ -290,33 +290,34 @@ void gogo(){
     //cout<<"firststep:"<<firststep<<"\n";
     //health=0;
     if(firststep==0){
-        cout<<"\nfirstup \n";
+        //cout<<"\nfirstup \n";
         change(2);
-        A2();
         path[0]="up";
+        A2();
     }
     else if(firststep==1){
-        cout<<"\nfirstleft \n";
+        //cout<<"\nfirstleft \n";
         change(4);
-        A4();
         path[0]="left";
+        A4();
     }
     else if(firststep==2){
-        cout<<"\nfirstright \n";
+        //cout<<"\nfirstright \n";
         change(6);
-        A6();
         path[0]="right";
+        A6();
     }
     else if(firststep==3){
-        cout<<"\nfirstdown \n";
+        //cout<<"\nfirstdown \n";
         change(8);
-        A8();
         path[0]="down";
+        A8();
     }
 }
 void change(int goal){
+    goal--;
     //cout<<"goal:  "<<goal<<"  endl ";
-    for(int i=1;i<=9;i++){
+    for(int i=0;i<=8;i++){
         place[i]++;
         //cout<<place[i]<<" ";
         //cout<<"goal: "<<goal;
@@ -337,8 +338,8 @@ void orbset(int want){
 }
 void orbfinish(){
     orb=100;
-    cout<<"orbnum:  "<<orbnum<<"  num:  "<<num<<"  ";
-    for(int i=0;i<=100;i++){
+    //cout<<"orbnum:  "<<orbnum<<"  num:  "<<num<<"\n";
+    for(int i=0;i<=num;i++){
         cout<<path[i]<<" "<<endl;
     }
     flag=1;
@@ -367,10 +368,10 @@ int main(){
             //delay;
         }
     }
-    for(int i=0;i<=100;i++){
+    /*for(int i=0;i<=100;i++){
         cout<<"\npath"<<i<<" "<<path[i];
-    }
-    cout<<"\norbnum: "<<orbnum;
+    }*/
+    cout<<"\nfailcount: "<<failcount;
     return 0;
 
 }
